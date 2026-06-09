@@ -1,0 +1,2 @@
+# Core Platform domain events (E-CORE-001…011 per EVENT_CATALOG). Authored in Sprint 1
+# Area 5/6 (T-5.5, T-6.3). Cross-module communication is Events-only (D-027).

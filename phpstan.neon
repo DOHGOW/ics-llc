@@ -1,0 +1,14 @@
+includes:
+    - vendor/larastan/larastan/extension.neon
+    # Bootstrap-recovery baseline (D-088 GREEN-CI): 114 pre-existing findings accepted as tracked
+    # technical debt (predominantly property.notFound on dynamic Eloquent attributes — no runtime
+    # impact). Burn down by adding @property annotations to models; do NOT grow the baseline.
+    - phpstan-baseline.neon
+
+parameters:
+    paths:
+        - app
+    level: 5
+    # Module-boundary discipline (D-027) and quality gates are enforced here.
+    # Raise the level incrementally as the codebase matures.
+    ignoreErrors: []

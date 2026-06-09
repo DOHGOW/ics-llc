@@ -1,0 +1,2 @@
+# Core Platform models (User, Tenant, AuditLog, ConsentLog, ...) per DATABASE_BLUEPRINT.
+# Authored in Sprint 1 Tasks T-3/T-4 — NOT in Task 1 (scaffold only).

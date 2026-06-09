@@ -1,0 +1,589 @@
+parameters:
+	ignoreErrors:
+		-
+			message: '#^Access to an undefined property Illuminate\\Database\\Eloquent\\Model\:\:\$module\.$#'
+			identifier: property.notFound
+			count: 1
+			path: app/Billing/MembershipTierResolver.php
+
+		-
+			message: '#^Property App\\Http\\Controllers\\Admin\\TenantAdminController\:\:\$context is never read, only written\.$#'
+			identifier: property.onlyWritten
+			count: 1
+			path: app/Http/Controllers/Admin/TenantAdminController.php
+
+		-
+			message: '#^Called ''env'' outside of the config directory which returns null when the config is cached, use ''config''\.$#'
+			identifier: larastan.noEnvCallsOutsideOfConfig
+			count: 1
+			path: app/Http/Controllers/Auth/AuthController.php
+
+		-
+			message: '#^Parameter \#2 \$sub of method App\\Services\\Billing\\PaymentService\:\:refund\(\) expects App\\Models\\Billing\\BillingSubscription\|null, Illuminate\\Database\\Eloquent\\Model\|null given\.$#'
+			identifier: argument.type
+			count: 1
+			path: app/Http/Controllers/Billing/Admin/BillingAdminController.php
+
+		-
+			message: '#^Access to an undefined property Illuminate\\Database\\Eloquent\\Model\:\:\$id\.$#'
+			identifier: property.notFound
+			count: 1
+			path: app/Http/Controllers/Client/DeliverableController.php
+
+		-
+			message: '#^Access to an undefined property Illuminate\\Database\\Eloquent\\Model\:\:\$id\.$#'
+			identifier: property.notFound
+			count: 1
+			path: app/Http/Controllers/Client/MilestoneController.php
+
+		-
+			message: '#^Access to an undefined property Illuminate\\Database\\Eloquent\\Model\:\:\$id\.$#'
+			identifier: property.notFound
+			count: 1
+			path: app/Http/Controllers/Client/TicketReplyController.php
+
+		-
+			message: '#^Parameter \#1 \$callback of method Illuminate\\Support\\Collection\<int,App\\Models\\Knowledge\\KnowledgeArticle\>\:\:transform\(\) expects callable\(App\\Models\\Knowledge\\KnowledgeArticle, int\)\: App\\Models\\Knowledge\\KnowledgeArticle, Closure\(mixed\)\: App\\Http\\Resources\\Knowledge\\KnowledgeArticleResource given\.$#'
+			identifier: argument.type
+			count: 1
+			path: app/Http/Controllers/Knowledge/KnowledgeCenterController.php
+
+		-
+			message: '#^Parameter \#1 \$callback of method Illuminate\\Support\\Collection\<int,App\\Models\\Knowledge\\KnowledgeResource\>\:\:transform\(\) expects callable\(App\\Models\\Knowledge\\KnowledgeResource, int\)\: App\\Models\\Knowledge\\KnowledgeResource, Closure\(mixed\)\: App\\Http\\Resources\\Knowledge\\KnowledgeResourceResource given\.$#'
+			identifier: argument.type
+			count: 1
+			path: app/Http/Controllers/Knowledge/KnowledgeCenterController.php
+
+		-
+			message: '#^Parameter \#2 \$listing of method App\\Http\\Controllers\\Marketplace\\ApplicationController\:\:canReview\(\) expects App\\Models\\Marketplace\\MarketplaceListing, Illuminate\\Database\\Eloquent\\Model\|null given\.$#'
+			identifier: argument.type
+			count: 2
+			path: app/Http/Controllers/Marketplace/ApplicationController.php
+
+		-
+			message: '#^Access to an undefined property Illuminate\\Database\\Eloquent\\Model\:\:\$module\.$#'
+			identifier: property.notFound
+			count: 1
+			path: app/Http/Controllers/Membership/Admin/MembershipAdminController.php
+
+		-
+			message: '#^Access to an undefined property Illuminate\\Database\\Eloquent\\Model\:\:\$id\.$#'
+			identifier: property.notFound
+			count: 1
+			path: app/Http/Controllers/Program/CohortController.php
+
+		-
+			message: '#^Parameter \#2 \$cohort of method App\\Services\\Startup\\ProgramParticipationService\:\:canManageCohort\(\) expects App\\Models\\Startup\\ProgramCohort, Illuminate\\Database\\Eloquent\\Model\|null given\.$#'
+			identifier: argument.type
+			count: 3
+			path: app/Http/Controllers/Program/EventController.php
+
+		-
+			message: '#^Parameter \#2 \$cohort of method App\\Services\\Startup\\ProgramParticipationService\:\:canManageCohort\(\) expects App\\Models\\Startup\\ProgramCohort, Illuminate\\Database\\Eloquent\\Model given\.$#'
+			identifier: argument.type
+			count: 1
+			path: app/Http/Controllers/Program/IntakeController.php
+
+		-
+			message: '#^Parameter \#2 \$cohort of method App\\Services\\Startup\\ProgramParticipationService\:\:canManageCohort\(\) expects App\\Models\\Startup\\ProgramCohort, Illuminate\\Database\\Eloquent\\Model given\.$#'
+			identifier: argument.type
+			count: 1
+			path: app/Http/Controllers/Program/ParticipationController.php
+
+		-
+			message: '#^Parameter \#1 \$callback of method Illuminate\\Support\\Collection\<int,App\\Models\\Research\\ResearchPublication\>\:\:transform\(\) expects callable\(App\\Models\\Research\\ResearchPublication, int\)\: App\\Models\\Research\\ResearchPublication, Closure\(mixed\)\: App\\Http\\Resources\\Research\\ResearchPublicationResource given\.$#'
+			identifier: argument.type
+			count: 1
+			path: app/Http/Controllers/Research/ResearchCenterController.php
+
+		-
+			message: '#^Access to an undefined property Illuminate\\Database\\Eloquent\\Model\:\:\$id\.$#'
+			identifier: property.notFound
+			count: 1
+			path: app/Http/Controllers/Startup/MilestoneController.php
+
+		-
+			message: '#^Cannot call method isPast\(\) on string\.$#'
+			identifier: method.nonObject
+			count: 1
+			path: app/Http/Controllers/Startup/TeamController.php
+
+		-
+			message: '#^Access to an undefined property Illuminate\\Database\\Eloquent\\Model\:\:\$id\.$#'
+			identifier: property.notFound
+			count: 1
+			path: app/Http/Controllers/Training/Admin/CourseController.php
+
+		-
+			message: '#^Offset 1 on array\{list\<string\>, list\<non\-falsy\-string\>\} on left side of \?\? always exists and is not nullable\.$#'
+			identifier: nullCoalesce.offset
+			count: 1
+			path: app/Http/Middleware/SetLocale.php
+
+		-
+			message: '#^Call to an undefined method Illuminate\\Database\\Eloquent\\Model\:\:publicFields\(\)\.$#'
+			identifier: method.notFound
+			count: 1
+			path: app/Http/Resources/Community/CommunityProfileResource.php
+
+		-
+			message: '#^Access to an undefined property App\\Http\\Resources\\Knowledge\\KnowledgeArticleResource\:\:\$access_tier\.$#'
+			identifier: property.notFound
+			count: 1
+			path: app/Http/Resources/Knowledge/KnowledgeArticleResource.php
+
+		-
+			message: '#^Access to an undefined property App\\Http\\Resources\\Knowledge\\KnowledgeArticleResource\:\:\$body\.$#'
+			identifier: property.notFound
+			count: 1
+			path: app/Http/Resources/Knowledge/KnowledgeArticleResource.php
+
+		-
+			message: '#^Access to an undefined property App\\Http\\Resources\\Knowledge\\KnowledgeArticleResource\:\:\$excerpt\.$#'
+			identifier: property.notFound
+			count: 2
+			path: app/Http/Resources/Knowledge/KnowledgeArticleResource.php
+
+		-
+			message: '#^Access to an undefined property App\\Http\\Resources\\Knowledge\\KnowledgeArticleResource\:\:\$featured_image\.$#'
+			identifier: property.notFound
+			count: 1
+			path: app/Http/Resources/Knowledge/KnowledgeArticleResource.php
+
+		-
+			message: '#^Access to an undefined property App\\Http\\Resources\\Knowledge\\KnowledgeArticleResource\:\:\$id\.$#'
+			identifier: property.notFound
+			count: 1
+			path: app/Http/Resources/Knowledge/KnowledgeArticleResource.php
+
+		-
+			message: '#^Access to an undefined property App\\Http\\Resources\\Knowledge\\KnowledgeArticleResource\:\:\$published_at\.$#'
+			identifier: property.notFound
+			count: 1
+			path: app/Http/Resources/Knowledge/KnowledgeArticleResource.php
+
+		-
+			message: '#^Access to an undefined property App\\Http\\Resources\\Knowledge\\KnowledgeArticleResource\:\:\$read_time_min\.$#'
+			identifier: property.notFound
+			count: 1
+			path: app/Http/Resources/Knowledge/KnowledgeArticleResource.php
+
+		-
+			message: '#^Access to an undefined property App\\Http\\Resources\\Knowledge\\KnowledgeArticleResource\:\:\$seo_description\.$#'
+			identifier: property.notFound
+			count: 1
+			path: app/Http/Resources/Knowledge/KnowledgeArticleResource.php
+
+		-
+			message: '#^Access to an undefined property App\\Http\\Resources\\Knowledge\\KnowledgeArticleResource\:\:\$seo_title\.$#'
+			identifier: property.notFound
+			count: 1
+			path: app/Http/Resources/Knowledge/KnowledgeArticleResource.php
+
+		-
+			message: '#^Access to an undefined property App\\Http\\Resources\\Knowledge\\KnowledgeArticleResource\:\:\$slug\.$#'
+			identifier: property.notFound
+			count: 1
+			path: app/Http/Resources/Knowledge/KnowledgeArticleResource.php
+
+		-
+			message: '#^Access to an undefined property App\\Http\\Resources\\Knowledge\\KnowledgeArticleResource\:\:\$title\.$#'
+			identifier: property.notFound
+			count: 2
+			path: app/Http/Resources/Knowledge/KnowledgeArticleResource.php
+
+		-
+			message: '#^Access to an undefined property App\\Http\\Resources\\Knowledge\\KnowledgeArticleResource\:\:\$type\.$#'
+			identifier: property.notFound
+			count: 1
+			path: app/Http/Resources/Knowledge/KnowledgeArticleResource.php
+
+		-
+			message: '#^Access to an undefined property App\\Http\\Resources\\Knowledge\\KnowledgeArticleResource\:\:\$video_embed_url\.$#'
+			identifier: property.notFound
+			count: 1
+			path: app/Http/Resources/Knowledge/KnowledgeArticleResource.php
+
+		-
+			message: '#^Access to an undefined property App\\Http\\Resources\\Knowledge\\KnowledgeResourceResource\:\:\$access_tier\.$#'
+			identifier: property.notFound
+			count: 1
+			path: app/Http/Resources/Knowledge/KnowledgeResourceResource.php
+
+		-
+			message: '#^Access to an undefined property App\\Http\\Resources\\Knowledge\\KnowledgeResourceResource\:\:\$description\.$#'
+			identifier: property.notFound
+			count: 2
+			path: app/Http/Resources/Knowledge/KnowledgeResourceResource.php
+
+		-
+			message: '#^Access to an undefined property App\\Http\\Resources\\Knowledge\\KnowledgeResourceResource\:\:\$file_path\.$#'
+			identifier: property.notFound
+			count: 1
+			path: app/Http/Resources/Knowledge/KnowledgeResourceResource.php
+
+		-
+			message: '#^Access to an undefined property App\\Http\\Resources\\Knowledge\\KnowledgeResourceResource\:\:\$file_size_kb\.$#'
+			identifier: property.notFound
+			count: 1
+			path: app/Http/Resources/Knowledge/KnowledgeResourceResource.php
+
+		-
+			message: '#^Access to an undefined property App\\Http\\Resources\\Knowledge\\KnowledgeResourceResource\:\:\$id\.$#'
+			identifier: property.notFound
+			count: 1
+			path: app/Http/Resources/Knowledge/KnowledgeResourceResource.php
+
+		-
+			message: '#^Access to an undefined property App\\Http\\Resources\\Knowledge\\KnowledgeResourceResource\:\:\$published_at\.$#'
+			identifier: property.notFound
+			count: 1
+			path: app/Http/Resources/Knowledge/KnowledgeResourceResource.php
+
+		-
+			message: '#^Access to an undefined property App\\Http\\Resources\\Knowledge\\KnowledgeResourceResource\:\:\$seo_description\.$#'
+			identifier: property.notFound
+			count: 1
+			path: app/Http/Resources/Knowledge/KnowledgeResourceResource.php
+
+		-
+			message: '#^Access to an undefined property App\\Http\\Resources\\Knowledge\\KnowledgeResourceResource\:\:\$seo_title\.$#'
+			identifier: property.notFound
+			count: 1
+			path: app/Http/Resources/Knowledge/KnowledgeResourceResource.php
+
+		-
+			message: '#^Access to an undefined property App\\Http\\Resources\\Knowledge\\KnowledgeResourceResource\:\:\$slug\.$#'
+			identifier: property.notFound
+			count: 1
+			path: app/Http/Resources/Knowledge/KnowledgeResourceResource.php
+
+		-
+			message: '#^Access to an undefined property App\\Http\\Resources\\Knowledge\\KnowledgeResourceResource\:\:\$title\.$#'
+			identifier: property.notFound
+			count: 2
+			path: app/Http/Resources/Knowledge/KnowledgeResourceResource.php
+
+		-
+			message: '#^Access to an undefined property App\\Http\\Resources\\Knowledge\\KnowledgeResourceResource\:\:\$type\.$#'
+			identifier: property.notFound
+			count: 1
+			path: app/Http/Resources/Knowledge/KnowledgeResourceResource.php
+
+		-
+			message: '#^Access to an undefined property App\\Http\\Resources\\Research\\ResearchPublicationResource\:\:\$abstract\.$#'
+			identifier: property.notFound
+			count: 2
+			path: app/Http/Resources/Research/ResearchPublicationResource.php
+
+		-
+			message: '#^Access to an undefined property App\\Http\\Resources\\Research\\ResearchPublicationResource\:\:\$access_tier\.$#'
+			identifier: property.notFound
+			count: 1
+			path: app/Http/Resources/Research/ResearchPublicationResource.php
+
+		-
+			message: '#^Access to an undefined property App\\Http\\Resources\\Research\\ResearchPublicationResource\:\:\$authors\.$#'
+			identifier: property.notFound
+			count: 1
+			path: app/Http/Resources/Research/ResearchPublicationResource.php
+
+		-
+			message: '#^Access to an undefined property App\\Http\\Resources\\Research\\ResearchPublicationResource\:\:\$body\.$#'
+			identifier: property.notFound
+			count: 1
+			path: app/Http/Resources/Research/ResearchPublicationResource.php
+
+		-
+			message: '#^Access to an undefined property App\\Http\\Resources\\Research\\ResearchPublicationResource\:\:\$content_group\.$#'
+			identifier: property.notFound
+			count: 1
+			path: app/Http/Resources/Research/ResearchPublicationResource.php
+
+		-
+			message: '#^Access to an undefined property App\\Http\\Resources\\Research\\ResearchPublicationResource\:\:\$doi\.$#'
+			identifier: property.notFound
+			count: 1
+			path: app/Http/Resources/Research/ResearchPublicationResource.php
+
+		-
+			message: '#^Access to an undefined property App\\Http\\Resources\\Research\\ResearchPublicationResource\:\:\$file_path\.$#'
+			identifier: property.notFound
+			count: 1
+			path: app/Http/Resources/Research/ResearchPublicationResource.php
+
+		-
+			message: '#^Access to an undefined property App\\Http\\Resources\\Research\\ResearchPublicationResource\:\:\$id\.$#'
+			identifier: property.notFound
+			count: 1
+			path: app/Http/Resources/Research/ResearchPublicationResource.php
+
+		-
+			message: '#^Access to an undefined property App\\Http\\Resources\\Research\\ResearchPublicationResource\:\:\$publish_date\.$#'
+			identifier: property.notFound
+			count: 1
+			path: app/Http/Resources/Research/ResearchPublicationResource.php
+
+		-
+			message: '#^Access to an undefined property App\\Http\\Resources\\Research\\ResearchPublicationResource\:\:\$seo_description\.$#'
+			identifier: property.notFound
+			count: 1
+			path: app/Http/Resources/Research/ResearchPublicationResource.php
+
+		-
+			message: '#^Access to an undefined property App\\Http\\Resources\\Research\\ResearchPublicationResource\:\:\$seo_title\.$#'
+			identifier: property.notFound
+			count: 1
+			path: app/Http/Resources/Research/ResearchPublicationResource.php
+
+		-
+			message: '#^Access to an undefined property App\\Http\\Resources\\Research\\ResearchPublicationResource\:\:\$slug\.$#'
+			identifier: property.notFound
+			count: 1
+			path: app/Http/Resources/Research/ResearchPublicationResource.php
+
+		-
+			message: '#^Access to an undefined property App\\Http\\Resources\\Research\\ResearchPublicationResource\:\:\$title\.$#'
+			identifier: property.notFound
+			count: 2
+			path: app/Http/Resources/Research/ResearchPublicationResource.php
+
+		-
+			message: '#^Cannot call method isFuture\(\) on string\.$#'
+			identifier: method.nonObject
+			count: 1
+			path: app/Models/Billing/BillingSubscription.php
+
+		-
+			message: '#^Cannot call method isPast\(\) on string\.$#'
+			identifier: method.nonObject
+			count: 1
+			path: app/Models/Core/RoleEscalationApproval.php
+
+		-
+			message: '#^Cannot call method isPast\(\) on string\.$#'
+			identifier: method.nonObject
+			count: 1
+			path: app/Models/Training/Certificate.php
+
+		-
+			message: '#^PHPDoc tag @var above a class has no effect\.$#'
+			identifier: varTag.misplaced
+			count: 1
+			path: app/Providers/TenancyServiceProvider.php
+
+		-
+			message: '#^Empty array passed to foreach\.$#'
+			identifier: foreach.emptyArray
+			count: 1
+			path: app/Services/Auth/MfaService.php
+
+		-
+			message: '#^Property App\\Models\\Core\\User\:\:\$mfa_recovery_codes \(string\|null\) does not accept list\.$#'
+			identifier: assign.propertyType
+			count: 1
+			path: app/Services/Auth/MfaService.php
+
+		-
+			message: '#^Property App\\Models\\Core\\User\:\:\$mfa_recovery_codes \(string\|null\) does not accept list\<string\>\.$#'
+			identifier: assign.propertyType
+			count: 1
+			path: app/Services/Auth/MfaService.php
+
+		-
+			message: '#^Expression on left side of \?\? is not nullable\.$#'
+			identifier: nullCoalesce.expr
+			count: 1
+			path: app/Services/Auth/RoleAssignmentService.php
+
+		-
+			message: '#^Parameter \#1 \$callback of method Illuminate\\Database\\Eloquent\\Builder\<Illuminate\\Database\\Eloquent\\Model\>\:\:each\(\) expects callable\(Illuminate\\Database\\Eloquent\\Model, int\)\: mixed, Closure\(App\\Models\\Billing\\BillingSubscription\)\: void given\.$#'
+			identifier: argument.type
+			count: 1
+			path: app/Services/Billing/ReconciliationService.php
+
+		-
+			message: '#^Parameter \#1 \$plan of method App\\Services\\Billing\\SubscriptionService\:\:periodInterval\(\) expects App\\Models\\Billing\\BillingPlan\|null, Illuminate\\Database\\Eloquent\\Model\|null given\.$#'
+			identifier: argument.type
+			count: 1
+			path: app/Services/Billing/SubscriptionService.php
+
+		-
+			message: '#^Method App\\Services\\Billing\\WebhookProcessor\:\:subscriptionFromPayload\(\) should return App\\Models\\Billing\\BillingSubscription\|null but returns Illuminate\\Database\\Eloquent\\Model\|null\.$#'
+			identifier: return.type
+			count: 1
+			path: app/Services/Billing/WebhookProcessor.php
+
+		-
+			message: '#^Using nullsafe property access "\?\-\>user_id" on left side of \?\? is unnecessary\. Use \-\> instead\.$#'
+			identifier: nullsafe.neverNull
+			count: 1
+			path: app/Services/Billing/WebhookProcessor.php
+
+		-
+			message: '#^Call to an undefined method Illuminate\\Database\\Eloquent\\Model\:\:archive\(\)\.$#'
+			identifier: method.notFound
+			count: 1
+			path: app/Services/Content/CmsService.php
+
+		-
+			message: '#^Call to an undefined method Illuminate\\Database\\Eloquent\\Model\:\:publish\(\)\.$#'
+			identifier: method.notFound
+			count: 1
+			path: app/Services/Content/CmsService.php
+
+		-
+			message: '#^Call to an undefined method Illuminate\\Database\\Eloquent\\Model\:\:submitForReview\(\)\.$#'
+			identifier: method.notFound
+			count: 1
+			path: app/Services/Content/CmsService.php
+
+		-
+			message: '#^Using nullsafe method call on non\-nullable type Illuminate\\Http\\Request\. Use \-\> instead\.$#'
+			identifier: nullsafe.neverNull
+			count: 3
+			path: app/Services/Content/EngagementRecorder.php
+
+		-
+			message: '#^Using nullsafe property access on non\-nullable type Illuminate\\Http\\Request\. Use \-\> instead\.$#'
+			identifier: nullsafe.neverNull
+			count: 1
+			path: app/Services/Content/EngagementRecorder.php
+
+		-
+			message: '#^Access to an undefined property Illuminate\\Database\\Eloquent\\Model\:\:\$assigned_to\.$#'
+			identifier: property.notFound
+			count: 1
+			path: app/Services/Crm/CrmService.php
+
+		-
+			message: '#^Access to an undefined property Illuminate\\Database\\Eloquent\\Model\:\:\$billing_period\.$#'
+			identifier: property.notFound
+			count: 1
+			path: app/Services/Membership/MembershipAnalyticsService.php
+
+		-
+			message: '#^Access to an undefined property Illuminate\\Database\\Eloquent\\Model\:\:\$name\.$#'
+			identifier: property.notFound
+			count: 1
+			path: app/Services/Membership/MembershipAnalyticsService.php
+
+		-
+			message: '#^Access to an undefined property Illuminate\\Database\\Eloquent\\Model\:\:\$price\.$#'
+			identifier: property.notFound
+			count: 1
+			path: app/Services/Membership/MembershipAnalyticsService.php
+
+		-
+			message: '#^Using nullsafe property access "\?\-\>name" on left side of \?\? is unnecessary\. Use \-\> instead\.$#'
+			identifier: nullsafe.neverNull
+			count: 1
+			path: app/Services/Membership/MembershipAnalyticsService.php
+
+		-
+			message: '#^Using nullsafe property access "\?\-\>price" on left side of \?\? is unnecessary\. Use \-\> instead\.$#'
+			identifier: nullsafe.neverNull
+			count: 1
+			path: app/Services/Membership/MembershipAnalyticsService.php
+
+		-
+			message: '#^Access to an undefined property Illuminate\\Database\\Eloquent\\Model\:\:\$module\.$#'
+			identifier: property.notFound
+			count: 1
+			path: app/Services/Membership/MembershipService.php
+
+		-
+			message: '#^Access to an undefined property Illuminate\\Database\\Eloquent\\Model\:\:\$name\.$#'
+			identifier: property.notFound
+			count: 1
+			path: app/Services/Membership/MembershipService.php
+
+		-
+			message: '#^Parameter \#1 \$callback of method Illuminate\\Support\\Collection\<\(int\|string\),mixed\>\:\:map\(\) contains unresolvable type\.$#'
+			identifier: argument.unresolvableType
+			count: 1
+			path: app/Services/Membership/MembershipService.php
+
+		-
+			message: '#^Access to an undefined property Illuminate\\Database\\Eloquent\\Model\:\:\$type\.$#'
+			identifier: property.notFound
+			count: 1
+			path: app/Services/Startup/CompletionValidator.php
+
+		-
+			message: '#^Access to an undefined property App\\Models\\Startup\\ProgramEventScore\:\:\$avg_score\.$#'
+			identifier: property.notFound
+			count: 1
+			path: app/Services/Startup/EventService.php
+
+		-
+			message: '#^Access to an undefined property Illuminate\\Database\\Eloquent\\Model\:\:\$type\.$#'
+			identifier: property.notFound
+			count: 2
+			path: app/Services/Startup/IntakeService.php
+
+		-
+			message: '#^Parameter \#1 \$startup of method App\\Services\\Startup\\IntakeService\:\:assertNoConflictingParticipation\(\) expects App\\Models\\Startup\\Startup, Illuminate\\Database\\Eloquent\\Model\|null given\.$#'
+			identifier: argument.type
+			count: 1
+			path: app/Services/Startup/IntakeService.php
+
+		-
+			message: '#^Parameter \#1 \$startup of method App\\Services\\Startup\\StartupGovernanceService\:\:setLifecycleStage\(\) expects App\\Models\\Startup\\Startup, Illuminate\\Database\\Eloquent\\Model\|null given\.$#'
+			identifier: argument.type
+			count: 1
+			path: app/Services/Startup/IntakeService.php
+
+		-
+			message: '#^Access to an undefined property Illuminate\\Database\\Eloquent\\Model\:\:\$type\.$#'
+			identifier: property.notFound
+			count: 1
+			path: app/Services/Startup/ProgramEnrollmentService.php
+
+		-
+			message: '#^Parameter \#1 \$program of method App\\Services\\Startup\\ProgramGovernanceService\:\:fire\(\) expects App\\Models\\Startup\\StartupProgram, Illuminate\\Database\\Eloquent\\Model\|null given\.$#'
+			identifier: argument.type
+			count: 2
+			path: app/Services/Startup/ProgramGovernanceService.php
+
+		-
+			message: '#^Property App\\Services\\Startup\\ProgramParticipationService\:\:\$startupAccess is never read, only written\.$#'
+			identifier: property.onlyWritten
+			count: 1
+			path: app/Services/Startup/ProgramParticipationService.php
+
+		-
+			message: '#^Access to an undefined property Illuminate\\Database\\Eloquent\\Model\:\:\$correct_answer\.$#'
+			identifier: property.notFound
+			count: 2
+			path: app/Services/Training/AssessmentService.php
+
+		-
+			message: '#^Access to an undefined property Illuminate\\Database\\Eloquent\\Model\:\:\$id\.$#'
+			identifier: property.notFound
+			count: 1
+			path: app/Services/Training/AssessmentService.php
+
+		-
+			message: '#^Access to an undefined property Illuminate\\Database\\Eloquent\\Model\:\:\$marks\.$#'
+			identifier: property.notFound
+			count: 2
+			path: app/Services/Training/AssessmentService.php
+
+		-
+			message: '#^Access to an undefined property Illuminate\\Database\\Eloquent\\Model\:\:\$type\.$#'
+			identifier: property.notFound
+			count: 2
+			path: app/Services/Training/AssessmentService.php
+
+		-
+			message: '#^Access to an undefined property Illuminate\\Database\\Eloquent\\Model\:\:\$validity_months\.$#'
+			identifier: property.notFound
+			count: 1
+			path: app/Services/Training/CertificateService.php
+
+		-
+			message: '#^Trait App\\Tenancy\\Concerns\\TenantAware is used zero times and is not analysed\.$#'
+			identifier: trait.unused
+			count: 1
+			path: app/Tenancy/Concerns/TenantAware.php

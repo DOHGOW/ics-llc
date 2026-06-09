@@ -1,0 +1,12 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/*
+ * RTL-ready foundation (D-014 / T-8.2):
+ * - Layout direction is driven by the <html dir="..."> attribute.
+ * - Use Tailwind logical utilities (ms-/me-, ps-/pe-, start/end) in markup;
+ *   avoid physical left/right so Arabic (Phase 3) flips cleanly.
+ * - Accessibility (D-028 / WCAG 2.1 AA): ensure visible :focus-visible
+ *   outlines and sufficient contrast are preserved when components are added.
+ */

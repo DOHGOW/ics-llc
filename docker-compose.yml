@@ -1,0 +1,37 @@
+# T-2.4 — Local Database Engine Parity (LIM-03 / M-3)
+#
+# Gate 0 CONFIRMED production engine: MySQL 8.x (matches D-002 — LIM-03 does NOT apply).
+# Pins local development to the same engine so JSON / FULLTEXT / ENUM behaviour cannot
+# drift between dev, staging, CI, and production.
+#
+# Default below is mysql:8.0. If production runs MySQL 8.4, override to match exactly:
+#   export DB_IMAGE=mysql:8.4
+
+services:
+  db:
+    image: ${DB_IMAGE:-mysql:8.0}
+    command: --default-authentication-plugin=caching_sha2_password
+    environment:
+      MYSQL_DATABASE: ${DB_DATABASE:-ics}
+      MYSQL_USER: ${DB_USERNAME:-ics}
+      MYSQL_PASSWORD: ${DB_PASSWORD:-secret}
+      MYSQL_ROOT_PASSWORD: ${DB_ROOT_PASSWORD:-rootsecret}
+    ports:
+      - "3306:3306"
+    volumes:
+      - ics-db:/var/lib/mysql
+    healthcheck:
+      test: ["CMD-SHELL", "mysqladmin ping -h localhost -p$$MYSQL_ROOT_PASSWORD || exit 1"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  # Redis is a VPS-tier service (D-037). Uncomment ONLY for local VPS-parity testing;
+  # it is never used on shared hosting (drivers stay file/database there).
+  # redis:
+  #   image: redis:7-alpine
+  #   ports:
+  #     - "6379:6379"
+
+volumes:
+  ics-db:

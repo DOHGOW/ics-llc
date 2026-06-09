@@ -1,0 +1,25 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(composer config *)",
+      "Bash(composer --version)",
+      "Bash(composer validate *)",
+      "Bash(composer audit *)",
+      "Bash(php artisan *)",
+      "Bash(grep -rEl '\\\\$this->authorize\\\\\\(|\\\\$this->middleware\\\\\\(|AuthorizesRequests|ValidatesRequests|DispatchesJobs' app/Http/Controllers)",
+      "Bash(grep -rE '\\\\$this->authorize\\\\\\(' app/Http/Controllers)",
+      "Bash(grep -iE 'Tests\\\\\\\\\\\\\\\\')",
+      "Bash(./vendor/bin/phpstan analyse *)",
+      "Bash(grep -iE 'Tests\\\\\\\\\\\\\\\\|Tests:|Duration')",
+      "Bash(\"C:/xampp/mysql/bin/mysql.exe\" -u root --connect-timeout=5 -e \"SELECT VERSION\\(\\) AS server_version;\")",
+      "Bash(echo \"exit=$?\")",
+      "Bash(ls \"C:/xampp/mysql/data/mysql\")",
+      "Bash(\"C:/xampp/mysql/bin/mysqld.exe\" --datadir=\"C:/xampp/mysql/data\" --skip-grant-tables=0)",
+      "Bash(echo \"started pid $!\")",
+      "Bash(\"C:/xampp/mysql/bin/mysql.exe\" -u root --connect-timeout=3 -e \"SELECT VERSION\\(\\);\")",
+      "Bash(break)",
+      "Read(//tmp/**)",
+      "Bash(grep -nE '\\\\$table->|nullable|default' database/migrations/2026_06_03_000001_create_crm_accounts_table.php)"
+    ]
+  }
+}

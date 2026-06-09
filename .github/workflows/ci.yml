@@ -1,0 +1,114 @@
+name: CI
+
+# T-2.3 — CI Pipeline Foundation
+# Enforces the IMPLEMENTATION_GOVERNANCE §7 automated quality gates on every push/PR.
+# Assumes the bootstrapped Laravel project (skeleton + ICS overlay) is committed.
+
+on:
+  push:
+    branches: [main, staging]
+  pull_request:
+    branches: [main, staging]
+
+permissions:
+  contents: read
+
+jobs:
+  quality:
+    name: Quality Gates
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup PHP 8.3
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.3'
+          extensions: bcmath, ctype, curl, dom, fileinfo, mbstring, openssl, pdo, pdo_sqlite, tokenizer, xml, gd, zip, intl
+          coverage: none
+
+      - name: Validate composer manifest
+        run: composer validate --strict
+
+      - name: Install dependencies
+        run: composer install --prefer-dist --no-interaction --no-progress
+
+      - name: Dependency vulnerability audit  # RS-1
+        run: composer audit --no-interaction || true   # report-only initially; flip to hard-fail when triaged
+
+      - name: Prepare environment
+        run: |
+          cp .env.example .env
+          php artisan key:generate
+
+      - name: Hardcoded-driver gate (D-037)   # T-2.2
+        run: bash scripts/ci/check-hardcoded-drivers.sh
+
+      - name: Code style — Pint
+        run: ./vendor/bin/pint --test
+
+      - name: Static analysis — Larastan
+        run: ./vendor/bin/phpstan analyse --no-progress
+
+      - name: Tests — PHPUnit
+        run: php artisan test
+
+  secrets:
+    name: Secret Scan
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout (full history)
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Gitleaks
+        uses: gitleaks/gitleaks-action@v2
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+  # ── Engine-parity (T-2.4) — Gate 0 CONFIRMED engine: MySQL 8.x (LIM-03 resolved) ──
+  # Validates engine-specific behaviour (JSON, FULLTEXT, ENUM) against production parity.
+  # If production runs MySQL 8.4, change the image tag to mysql:8.4 to match exactly.
+  engine-parity:
+    name: Engine Parity Tests (MySQL 8)
+    runs-on: ubuntu-latest
+    services:
+      db:
+        image: mysql:8.0
+        env:
+          MYSQL_DATABASE: ics_test
+          MYSQL_ROOT_PASSWORD: rootsecret
+        ports: ['3306:3306']
+        options: >-
+          --health-cmd="mysqladmin ping -h localhost -prootsecret"
+          --health-interval=10s --health-timeout=5s --health-retries=5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.3'
+          extensions: bcmath, ctype, curl, dom, fileinfo, mbstring, openssl, pdo, pdo_mysql, tokenizer, xml, gd, zip, intl
+          coverage: none
+      - run: composer install --prefer-dist --no-interaction --no-progress
+      - name: Prepare environment (MySQL)
+        run: |
+          cp .env.example .env
+          php artisan key:generate
+        env:
+          DB_CONNECTION: mysql
+          DB_HOST: 127.0.0.1
+          DB_PORT: '3306'
+          DB_DATABASE: ics_test
+          DB_USERNAME: root
+          DB_PASSWORD: rootsecret
+      - name: Tests against pinned engine
+        run: php artisan test
+        env:
+          DB_CONNECTION: mysql
+          DB_HOST: 127.0.0.1
+          DB_PORT: '3306'
+          DB_DATABASE: ics_test
+          DB_USERNAME: root
+          DB_PASSWORD: rootsecret
