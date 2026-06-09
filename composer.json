@@ -65,6 +65,9 @@
         "audit": {
             "block-insecure": true,
             "ignore": ["PKSA-mdq4-51ck-6kdq", "GHSA-5vg9-5847-vvmq", "CVE-2026-48019"]
+        },
+        "platform": {
+            "php": "8.3.0"
         }
     },
     "minimum-stability": "stable",
