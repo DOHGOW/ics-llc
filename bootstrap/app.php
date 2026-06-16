@@ -55,7 +55,13 @@ return Application::configure(basePath: dirname(__DIR__))
 
         // Correct client IP behind Cloudflare/LB (T-9.4). Replace '*' with explicit
         // Cloudflare ranges before production (D-048 / T9-3).
-        $middleware->trustProxies(at: (array) config('security.trusted_proxies', []));
+        // NOTE: do NOT call config() here — this closure runs via afterResolving(HttpKernel)
+        // BEFORE LoadConfiguration binds the `config` repository, so config() throws
+        // BindingResolutionException ("Target class [config] does not exist") on real HTTP
+        // requests (invisible to the test harness, which pre-bootstraps config). Use a literal;
+        // config-driven proxy ranges (D-048) must be applied where config is available
+        // (a provider boot() or a request-time TrustProxies middleware), not at build time.
+        $middleware->trustProxies(at: '*');
     })
     ->withExceptions(function (Exceptions $exceptions) {
         // Default handling; API returns JSON problem responses.
