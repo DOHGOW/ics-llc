@@ -3,7 +3,6 @@
 use App\Http\Middleware\RequireMfaForAdmins;
 use App\Http\Middleware\SecurityHeaders;
 use App\Http\Middleware\SetLocale;
-use Illuminate\Auth\AuthenticationException;
 use Illuminate\Foundation\Application;
 use Illuminate\Foundation\Configuration\Exceptions;
 use Illuminate\Foundation\Configuration\Middleware;
@@ -65,12 +64,11 @@ return Application::configure(basePath: dirname(__DIR__))
         $middleware->trustProxies(at: '*');
     })
     ->withExceptions(function (Exceptions $exceptions) {
-        // API-first (D-023): an unauthenticated request to an api/* route must return 401 JSON,
-        // never redirect to a `login` route (none exists) — that redirect throws
-        // RouteNotFoundException ("Route [login] not defined") = HTTP 500 for non-JSON clients.
-        $exceptions->render(function (AuthenticationException $e, $request) {
-            if ($request->is('api/*')) {
-                return response()->json(['message' => $e->getMessage()], 401);
-            }
-        });
+        // API-first (D-023): force JSON exception rendering for api/* so an unauthenticated request
+        // returns 401 JSON DIRECTLY — never a redirect to a `login` route (none exists), which would
+        // throw RouteNotFoundException ("Route [login] not defined") = HTTP 500 for non-JSON clients.
+        // Handler::unauthenticated() consults shouldRenderJsonWhen (verified in framework source).
+        $exceptions->shouldRenderJsonWhen(
+            fn ($request, Throwable $e) => $request->is('api/*') || $request->expectsJson()
+        );
     })->create();
