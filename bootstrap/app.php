@@ -53,6 +53,12 @@ return Application::configure(basePath: dirname(__DIR__))
             'mfa.admin' => RequireMfaForAdmins::class,
         ]);
 
+        // API-first (D-023): never redirect unauthenticated guests to a `login` route (none exists).
+        // The Authenticate middleware eagerly evaluates route('login') for non-JSON requests, which
+        // throws RouteNotFoundException = 500; returning null + shouldRenderJsonWhen (below) yields a
+        // direct 401 JSON for api/* instead.
+        $middleware->redirectGuestsTo(fn () => null);
+
         // Correct client IP behind Cloudflare/LB (T-9.4). Replace '*' with explicit
         // Cloudflare ranges before production (D-048 / T9-3).
         // NOTE: do NOT call config() here — this closure runs via afterResolving(HttpKernel)
