@@ -59,15 +59,14 @@ return Application::configure(basePath: dirname(__DIR__))
         // direct 401 JSON for api/* instead.
         $middleware->redirectGuestsTo(fn () => null);
 
-        // Correct client IP behind Cloudflare/LB (T-9.4). Replace '*' with explicit
-        // Cloudflare ranges before production (D-048 / T9-3).
-        // NOTE: do NOT call config() here — this closure runs via afterResolving(HttpKernel)
-        // BEFORE LoadConfiguration binds the `config` repository, so config() throws
-        // BindingResolutionException ("Target class [config] does not exist") on real HTTP
-        // requests (invisible to the test harness, which pre-bootstraps config). Use a literal;
-        // config-driven proxy ranges (D-048) must be applied where config is available
-        // (a provider boot() or a request-time TrustProxies middleware), not at build time.
-        $middleware->trustProxies(at: '*');
+        // Trusted proxies (T-9.4 / D-048). VERIFIED infrastructure: LiteSpeed sets REMOTE_ADDR to the
+        // real client IP and HTTPS=on directly — no Cloudflare, no X-Forwarded-For/Proto. So trust NO
+        // proxies: there is no legitimate forwarding layer, and trusting X-Forwarded-* would only let
+        // clients spoof their IP (audit/rate-limit integrity, D-046) or scheme. If a real edge
+        // (Cloudflare/LB) is introduced later, trust its SPECIFIC ranges here (not '*').
+        // NOTE: do NOT call config() here — this closure runs via afterResolving(HttpKernel) BEFORE
+        // LoadConfiguration binds `config`, which would throw BindingResolutionException on real HTTP.
+        $middleware->trustProxies(at: []);
     })
     ->withExceptions(function (Exceptions $exceptions) {
         // API-first (D-023): force JSON exception rendering for api/* so an unauthenticated request
