@@ -3,6 +3,7 @@
 use App\Http\Middleware\RequireMfaForAdmins;
 use App\Http\Middleware\SecurityHeaders;
 use App\Http\Middleware\SetLocale;
+use Illuminate\Auth\AuthenticationException;
 use Illuminate\Foundation\Application;
 use Illuminate\Foundation\Configuration\Exceptions;
 use Illuminate\Foundation\Configuration\Middleware;
@@ -64,5 +65,12 @@ return Application::configure(basePath: dirname(__DIR__))
         $middleware->trustProxies(at: '*');
     })
     ->withExceptions(function (Exceptions $exceptions) {
-        // Default handling; API returns JSON problem responses.
+        // API-first (D-023): an unauthenticated request to an api/* route must return 401 JSON,
+        // never redirect to a `login` route (none exists) — that redirect throws
+        // RouteNotFoundException ("Route [login] not defined") = HTTP 500 for non-JSON clients.
+        $exceptions->render(function (AuthenticationException $e, $request) {
+            if ($request->is('api/*')) {
+                return response()->json(['message' => $e->getMessage()], 401);
+            }
+        });
     })->create();
